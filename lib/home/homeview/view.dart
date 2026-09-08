@@ -119,7 +119,9 @@ class _HomeviewPageState extends State<HomeviewPage>
         _isForcedUpdate = data['is_forced'];
 
         // Support the new format downloadSources, while remaining compatible with the old format download_url.
-        if (data.containsKey('downloadSources') && data['downloadSources'] is List) {
+        if (data.containsKey('downloadSources') &&
+            data['downloadSources'] is List &&
+            (data['downloadSources'] as List).isNotEmpty) {
           _downloadSources = List<Map<String, dynamic>>.from(
             data['downloadSources'].map((source) => Map<String, dynamic>.from(source))
           );
